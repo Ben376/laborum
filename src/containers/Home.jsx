@@ -93,7 +93,7 @@ handleClick (id) {
 }
 
 const mapStateToProps = state =>({
-    commentsList: state.data,
+    commentsList: state.reducer.data,
   });
   
 const mapDispatchToProps = dispatch => {

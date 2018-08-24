@@ -19,7 +19,7 @@ class Choosen extends Component {
 }
 
 const mapStateToProps = state =>({
-  id: state.userId,
+  id: state.reducerUserId.userId,
 });
 
 const mapDispatchToProps = dispatch => {

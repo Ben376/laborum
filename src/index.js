@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import reducer from './reducers/reducer';
+import combinedReducer from './reducers/index';
 
 import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from './saga/saga';
@@ -24,9 +24,9 @@ const persistConfig = {
     storage,
   }
   
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer(persistConfig, combinedReducer);
 let store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));
-let persistor = persistStore(store);
+let persistor = persistStore(store, { blacklist: ['reducer'] });
 
 sagaMiddleware.run(rootSaga);
 

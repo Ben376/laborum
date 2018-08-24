@@ -1,12 +1,17 @@
 import React, { Component, Fragment } from 'react'
 
+type State = {
+  savedComment: Array<any>,
+};
 
-export default class Historic extends Component {
-  constructor(props) {
-    super(props);
-      this.state={
-        savedComment: []
-      }
+type Props = {
+};
+
+export default class Historic extends Component<Props, State> {
+state: State;
+
+      state={
+        savedComment: [],
   }
 
   componentDidMount () {
@@ -15,7 +20,7 @@ export default class Historic extends Component {
     for (let i = 0; i < localStorage.length; i++) {
       
       let commentStored = { 
-            type: localStorage.key(i), 
+            key: localStorage.key(i), 
             item: localStorage.getItem(localStorage.key(i)) 
       };
       savedCommentCopy.push(commentStored);
@@ -34,7 +39,7 @@ export default class Historic extends Component {
         <h4> List of chosen items </h4>
         <div> 
           { this.state.savedComment.map(stored =>
-          <p key={stored.type} > { stored.item } </p>
+          <p key={stored.key} > { stored.item } </p>
           ) }
         </div>
       </Fragment>
