@@ -10,6 +10,7 @@ class Home extends Component {
 
 componentDidMount () {
   this.props.actions.fetchRequest();
+  
  }
 
 handleClick (id) {
@@ -18,11 +19,10 @@ handleClick (id) {
 }
 
   render() {
-
+   
       return (
       <Fragment>
-        <h3> Click on the button below to display the comments: </h3>
-        
+       
       <ReactTable
                 getTdProps={(state, rowInfo) => {
                   return {
@@ -94,7 +94,6 @@ handleClick (id) {
 
 const mapStateToProps = state =>({
     commentsList: state.data,
-    id: state.id,
   });
   
 const mapDispatchToProps = dispatch => {

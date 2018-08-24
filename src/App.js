@@ -5,7 +5,6 @@ import Choosen from './components/Choosen';
 import Historic from './components/Historic';
 import NavBar from './components/NavBar';
 
-
 import { Route, Switch } from 'react-router-dom';
 
 

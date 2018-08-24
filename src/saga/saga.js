@@ -24,5 +24,5 @@ yield spawn(apiIdSaga);
 }
 
 export const fetchingDisplayData = () => {
-      return axios.get(listApi)
+    return axios.get(listApi)
 }

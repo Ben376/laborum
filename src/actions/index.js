@@ -1,6 +1,6 @@
 import * as actionTypes from '../helpers/actionTypes';
 
-export const fetchRequest = (id) => {
+export const fetchRequest = () => {
     return { type: actionTypes.FETCH_DISPLAY_REQUEST};
   }
 export const getIdUser = (id) => {
