@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
 class Choosen extends Component {
-  render() {
+  render() {      
     return (
       <Fragment>
         <h4> Chosen one </h4>
@@ -19,7 +19,7 @@ class Choosen extends Component {
 }
 
 const mapStateToProps = state =>({
-  id: state.id,
+  id: state.userId,
 });
 
 const mapDispatchToProps = dispatch => {

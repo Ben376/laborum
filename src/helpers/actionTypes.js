@@ -1,3 +1,9 @@
 export const FETCH_DISPLAY = 'FETCH_DISPLAY';
 export const FETCH_ERROR = 'FETCH_ERROR';
-export const GET_ID = 'GET_ID';
+export const FETCH_DISPLAY_REQUEST = 'FETCH_DISPLAY_REQUEST';
+
+export const API_CALL_ID_REQUEST = 'API_CALL_ID_REQUEST';
+export const API_CALL_ID_SUCCESS = 'API_CALL_ID_SUCCESS';
+export const API_CALL_ID_FAILURE = 'API_CALL_ID_FAILURE';
+
+

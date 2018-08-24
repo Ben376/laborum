@@ -8,19 +8,20 @@ import "react-table/react-table.css";
 
 class Home extends Component {
 
+componentDidMount () {
+  this.props.actions.fetchRequest();
+ }
+
 handleClick (id) {
-  this.props.actions.getIdUser(id);
+  this.props.actions.getIdUser(id);  
   this.props.history.push('/Choosen');
 }
 
   render() {
 
-      const API = 'https://jsonplaceholder.typicode.com/comments';
-    
       return (
       <Fragment>
         <h3> Click on the button below to display the comments: </h3>
-        <button onClick={ () => this.props.actions.fetchingDisplayData(API) } > here </button>
         
       <ReactTable
                 getTdProps={(state, rowInfo) => {
