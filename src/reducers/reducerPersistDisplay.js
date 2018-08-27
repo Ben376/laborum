@@ -11,7 +11,7 @@ function persistItems(state, action) {
         return newPersistList;
 }
 
-const persistIdDisplay = (state = [], action) => {
+const persistIdDisplay = (state: Array<*> = [], action: Object): Array<*> => {
     
         switch (action.type) {
             case actionTypes.API_CALL_ID_SUCCESS:

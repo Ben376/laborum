@@ -1,11 +1,16 @@
-import * as actionTypes from '../helpers/actionTypes'
+import * as actionTypes from '../helpers/actionTypes';
+
+type fetch = {
+    data: Array<Object>,
+    error: any,
+}
 
 const initialState = {
     data: [],
     error: null,
-}
+};
 
-const fetchDisplay = (state = initialState, action) => {
+const fetchDisplay = (state: fetch = initialState, action: Object): fetch => {
     
         switch (action.type) {
             case actionTypes.FETCH_DISPLAY :
@@ -21,6 +26,6 @@ const fetchDisplay = (state = initialState, action) => {
             default :
                 return state;
         }
-}
+};
 
 export default fetchDisplay;

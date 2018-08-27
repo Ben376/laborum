@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
-class Choosen extends Component {
+type Props = {
+  id: Object,
+}
+
+class Choosen extends Component<Props> {
+  props: Props;
+
   render() {      
     return (
       <Fragment>

@@ -1,11 +1,16 @@
-import * as actionTypes from '../helpers/actionTypes'
+import * as actionTypes from '../helpers/actionTypes';
+
+type fetch = {
+    userId: ?Array<Object>,
+    error: any,
+}
 
 const initialState = {
     userId: [],
     error: null,
-}
+};
 
-const fetchIdApi = (state = initialState, action) => {
+const fetchIdApi = (state: fetch = initialState, action: Object): fetch => {
     
         switch (action.type) {
             case actionTypes.API_CALL_ID_REQUEST:
@@ -27,6 +32,6 @@ const fetchIdApi = (state = initialState, action) => {
             default :
                 return state;
         }
-}
+};
 
 export default fetchIdApi;
