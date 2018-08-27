@@ -13,13 +13,13 @@ class Historic extends Component<Props> {
       <Fragment>
         <h4> List of chosen items </h4>
          <div> 
-{/*            { this.props.persistData.map(stored =>
+            { this.props.persistData.map(stored =>
            <div key={stored.id} >
               <p> { stored.id } </p>
               <p> { stored.title } </p>
               <p> { stored.body } </p>
           </div>
-          ) }  */}
+          ) } 
         </div> 
       </Fragment>
     )

@@ -22,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['reducer']
+    whitelist: ['persistIdDisplay'],
 
   }
   

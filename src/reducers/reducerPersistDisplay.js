@@ -4,9 +4,9 @@ function persistItems(state, action) {
     let newItem = true;
     let newPersistList = state;
     newPersistList.find(x => {
-        if(x.id === action.payload.id) newItem = false});
+        if(x.id === action.data.id) newItem = false});
 
-        if (newItem) newPersistList.push(action.payload);
+        if (newItem) newPersistList.push(action.data);
       
         return newPersistList;
 }
