@@ -22,11 +22,13 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
     key: 'root',
     storage,
+    blacklist: ['reducer']
+
   }
   
 const persistedReducer = persistReducer(persistConfig, combinedReducer);
 let store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));
-let persistor = persistStore(store, { blacklist: ['reducer'] });
+let persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 

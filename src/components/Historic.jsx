@@ -1,48 +1,39 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions';
 
-type State = {
-  savedComment: Array<any>,
-};
+type Props = {};
 
-type Props = {
-};
-
-export default class Historic extends Component<Props, State> {
-state: State;
-
-      state={
-        savedComment: [],
-  }
-
-  componentDidMount () {
-
-    let savedCommentCopy = this.state.savedComment;
-    for (let i = 0; i < localStorage.length; i++) {
-      
-      let commentStored = { 
-            key: localStorage.key(i), 
-            item: localStorage.getItem(localStorage.key(i)) 
-      };
-      savedCommentCopy.push(commentStored);
-    }
-  
-    this.setState({
-      savedComment: savedCommentCopy,
-    })
-  }
-  
-
+class Historic extends Component<Props> {
+ 
   render() {
-    
+   
     return (
       <Fragment>
         <h4> List of chosen items </h4>
-        <div> 
-          { this.state.savedComment.map(stored =>
-          <p key={stored.key} > { stored.item } </p>
-          ) }
-        </div>
+         <div> 
+{/*            { this.props.persistData.map(stored =>
+           <div key={stored.id} >
+              <p> { stored.id } </p>
+              <p> { stored.title } </p>
+              <p> { stored.body } </p>
+          </div>
+          ) }  */}
+        </div> 
       </Fragment>
     )
   }
 }
+
+const mapStateToProps = state =>({
+  persistData: state.persistIdDisplay,
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Historic);

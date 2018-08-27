@@ -5,7 +5,7 @@ type action = {
   payload: number,
 }
 
-export const fetchRequest = () => {
+export const fetchRequest = (): string => {
     return { type: actionTypes.FETCH_DISPLAY_REQUEST};
   }
 export const getIdUser = (id: number): action => {
