@@ -23,8 +23,7 @@ const persistConfig = {
     key: 'root',
     storage,
     whitelist: ['persistIdDisplay'],
-
-  }
+  };
   
 const persistedReducer = persistReducer(persistConfig, combinedReducer);
 let store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));

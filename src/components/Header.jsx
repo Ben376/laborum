@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
 import logo from '../images/logo.svg';
 import '../App.css';
 

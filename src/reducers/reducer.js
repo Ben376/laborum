@@ -1,16 +1,11 @@
 import * as actionTypes from '../helpers/actionTypes';
 
-type fetch = {
-    data: Array<Object>,
-    error: any,
-}
-
 const initialState = {
     data: [],
     error: null,
 };
 
-const fetchDisplay = (state: fetch = initialState, action: Object): fetch => {
+const fetchDisplay = (state = initialState, action) => {
     
         switch (action.type) {
             case actionTypes.FETCH_DISPLAY :

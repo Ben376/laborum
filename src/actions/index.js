@@ -1,13 +1,8 @@
 import * as actionTypes from '../helpers/actionTypes';
 
-type action = {
-  type: string,
-  payload: number,
-}
-
-export const fetchRequest = (): string => {
+export const fetchRequest = () => {
     return { type: actionTypes.FETCH_DISPLAY_REQUEST};
   }
-export const getIdUser = (id: number): action => {
+export const getIdUser = (id) => {
     return { type: actionTypes.API_CALL_ID_REQUEST, payload: id };
   }

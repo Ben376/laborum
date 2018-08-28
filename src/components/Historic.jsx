@@ -1,25 +1,18 @@
-// @flow
-
-
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from '../actions';
 
 type Props = {
-  persistData: Object,
+  persistData: Array<Object>,
 };
 
 class Historic extends Component<Props> {
- 
   render() {
-   
     return (
       <Fragment>
         <h4> List of chosen items </h4>
          <div> 
             { this.props.persistData.map(stored =>
-           <div key={stored.id} >
+           <div key={ stored.id } >
               <p> { stored.id } </p>
               <p> { stored.title } </p>
               <p> { stored.body } </p>
@@ -35,10 +28,4 @@ const mapStateToProps = state =>({
   persistData: state.persistIdDisplay,
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Historic);
+export default connect(mapStateToProps)(Historic);

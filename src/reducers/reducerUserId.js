@@ -1,17 +1,11 @@
 import * as actionTypes from '../helpers/actionTypes';
 
-type fetch = {
-    userId: ?Array<Object>,
-    error: any,
-}
-
 const initialState = {
     userId: [],
     error: null,
 };
 
-const fetchIdApi = (state: fetch = initialState, action: Object): fetch => {
-    
+const fetchIdApi = (state = initialState, action) => {
         switch (action.type) {
             case actionTypes.API_CALL_ID_REQUEST:
                 return { 

@@ -4,5 +4,5 @@ import reducerUserId from './reducerUserId';
  import persistIdDisplay from './reducerPersistDisplay';
  
 export default combineReducers ({
-    reducer, reducerUserId, persistIdDisplay 
+    reducer, reducerUserId, persistIdDisplay,
 });

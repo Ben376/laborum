@@ -6,11 +6,17 @@ import * as actions from '../actions';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
-class Home extends Component {
+type Props = {
+  actions: Function,
+  history: Object,
+  commentsList: Array<Object>,
+};
+
+class Home extends Component<Props> {
+props: Props;
 
 componentDidMount () {
   this.props.actions.fetchRequest();
-  
  }
 
 handleClick (id) {
@@ -19,10 +25,8 @@ handleClick (id) {
 }
 
   render() {
-   
       return (
       <Fragment>
-       
       <ReactTable
                 getTdProps={(state, rowInfo) => {
                   return {
@@ -85,9 +89,7 @@ handleClick (id) {
                 defaultPageSize={20}
                 className="-striped -highlight"
               />
-
       </Fragment>
-      
     )
   }
 }

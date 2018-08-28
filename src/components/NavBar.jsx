@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import React, { Component, Fragment } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import { NavLink } from 'react-router-dom';
 
 export default class NavBar extends Component {
