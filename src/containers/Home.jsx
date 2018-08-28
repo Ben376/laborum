@@ -1,10 +1,16 @@
 import React, { Component, Fragment } from 'react';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
-import ReactTable from "react-table";
-import "react-table/react-table.css";
+/* import ReactTable from "react-table";
+   import "react-table/react-table.css";
+ */
+
+import Renderlist from '../components/RenderList';
+import SelectValue from '../components/Selectvalue';
+import RenderPagesNumber from '../components/RenderPagesNumber';
 
 type Props = {
   actions: Function,
@@ -20,16 +26,19 @@ class Home extends Component<Props> {
       itemPerPage: 20,
     };
 
-
 componentDidMount () {
   this.props.actions.fetchRequest();  
  }
 
- handleClickId (id) {   
+/*  handleClick (id) {   
+  this.props.actions.getIdUser(id);  
+  this.props.history.push('/Choosen');
+}  */
+
+handleClickId (id) {   
   this.props.actions.getIdUser(id);  
   this.props.history.push('/Choosen');
 } 
-
 
 handleClickPage(event) {
   this.setState({
@@ -37,68 +46,57 @@ handleClickPage(event) {
   });
 }
 
-  render() {
+handleClickNextPage() {
+  const currentPageCopy = this.state.currentPage;
+  this.setState({
+    currentPage: currentPageCopy + 1,
+  });
+}
+
+handleClickPreviouslyPage() {
+  let currentPageCopy = '';
+
+  this.state.currentPage > 1 ? 
+  currentPageCopy = this.state.currentPage - 1 :
+  currentPageCopy = 1;
+
+  this.setState({
+    currentPage: currentPageCopy,
+  });
+}
+
+handleChange (event) {
+  this.setState(
+  {[event.target.name] : event.target.value});
+
+  this.setState({
+    itemPerPage: event.target.value,
+  });
+}
+
+render() {
     const { apiCommentList } = this.props;
     const { currentPage, itemPerPage } = this.state;
-
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;
     const currentDisplayList = apiCommentList.slice(indexOfFirstItem, indexOfLastItem);
 
-    const renderList = currentDisplayList.map((item, index) => {
-      return <div 
-      key={`block-${index}`}
-      onClick={() => this.handleClickId(item.id)}
-      >
-      <li key={`id-${index}`}>{item.id}</li>
-      <p key={`name-${index}`}>{item.name}</p>
-      <b key={`email-${index}`}>{item.email}</b>
-      <p key={`body-${index}`}>{item.body}</p>
-
-      </div>;
-    });
-
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(apiCommentList.length / itemPerPage); i++) {
-      pageNumbers.push(i);
-    }
-
-    const renderPageNumbers = pageNumbers.map(number => {     
-      return (
-        <li
-          key={number}
-          id={number}
-          style={{
-            marginRight: '0.3em',
-            color: 'blue',
-            userSelect: 'none',
-            cursor: 'pointer',
-            margin: '10px',
-          }}
-          onClick={(event) => this.handleClickPage(event)}
-        >
-          {number}
-        </li>
-      );
-    });
-
       return (
       <Fragment>
+            <Renderlist 
+            handleClickId={ this.handleClickId.bind(this) } 
+            currentDisplayList={ currentDisplayList } />
 
-        <div>
-            <ul>
-              {renderList}
-            </ul>
-            <ul 
-            style={{
-              listStyle: 'none',
-              display: 'flex',
-            }}
-            id="page-numbers">
-              {renderPageNumbers}
-            </ul>
-          </div>
-
+            <SelectValue 
+            handleChange={this.handleChange.bind(this)} />
+            
+            <RenderPagesNumber 
+            apiCommentList = { this.props.apiCommentList } 
+            itemPerPage  = { this.state.itemPerPage }
+            handleClickPage = { this.handleClickPage.bind(this) }
+            handleClickPreviouslyPage = { this.handleClickPreviouslyPage.bind(this) }
+            handleClickNextPage = { this.handleClickNextPage.bind(this) }
+            />
 
      {/*  <ReactTable
                 getTdProps={(state, rowInfo) => {
