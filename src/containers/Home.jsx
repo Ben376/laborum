@@ -9,25 +9,98 @@ import "react-table/react-table.css";
 type Props = {
   actions: Function,
   history: Object,
-  commentsList: Array<Object>,
+  apiCommentList: Array<Object>,
 };
 
 class Home extends Component<Props> {
-props: Props;
+  props: Props;
+
+    state = {
+      currentPage: 1,
+      itemPerPage: 20,
+    };
+
 
 componentDidMount () {
-  this.props.actions.fetchRequest();
+  this.props.actions.fetchRequest();  
  }
 
-handleClick (id) {
+ handleClickId (id) {   
   this.props.actions.getIdUser(id);  
   this.props.history.push('/Choosen');
+} 
+
+
+handleClickPage(event) {
+  this.setState({
+    currentPage: Number(event.target.id),
+  });
 }
 
   render() {
+    const { apiCommentList } = this.props;
+    const { currentPage, itemPerPage } = this.state;
+
+    const indexOfLastItem = currentPage * itemPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemPerPage;
+    const currentDisplayList = apiCommentList.slice(indexOfFirstItem, indexOfLastItem);
+
+    const renderList = currentDisplayList.map((item, index) => {
+      return <div 
+      key={`block-${index}`}
+      onClick={() => this.handleClickId(item.id)}
+      >
+      <li key={`id-${index}`}>{item.id}</li>
+      <p key={`name-${index}`}>{item.name}</p>
+      <b key={`email-${index}`}>{item.email}</b>
+      <p key={`body-${index}`}>{item.body}</p>
+
+      </div>;
+    });
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(apiCommentList.length / itemPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => {     
+      return (
+        <li
+          key={number}
+          id={number}
+          style={{
+            marginRight: '0.3em',
+            color: 'blue',
+            userSelect: 'none',
+            cursor: 'pointer',
+            margin: '10px',
+          }}
+          onClick={(event) => this.handleClickPage(event)}
+        >
+          {number}
+        </li>
+      );
+    });
+
       return (
       <Fragment>
-      <ReactTable
+
+        <div>
+            <ul>
+              {renderList}
+            </ul>
+            <ul 
+            style={{
+              listStyle: 'none',
+              display: 'flex',
+            }}
+            id="page-numbers">
+              {renderPageNumbers}
+            </ul>
+          </div>
+
+
+     {/*  <ReactTable
                 getTdProps={(state, rowInfo) => {
                   return {
                     onClick: () => {
@@ -88,14 +161,14 @@ handleClick (id) {
                 ]}
                 defaultPageSize={20}
                 className="-striped -highlight"
-              />
+              /> */}
       </Fragment>
     )
   }
 }
 
 const mapStateToProps = state =>({
-    commentsList: state.reducer.data,
+    apiCommentList: state.reducer.data,
   });
   
 const mapDispatchToProps = dispatch => {
