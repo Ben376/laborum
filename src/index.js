@@ -11,7 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 import combinedReducer from './reducers/index';
 
 import createSagaMiddleware from 'redux-saga';
-import { rootSaga } from './saga/saga';
+import { rootSaga } from './saga/sagaFetchDisplay';
 
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';

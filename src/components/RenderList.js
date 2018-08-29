@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from 'react';
 
-export default class RenderList extends Component {
+type Props = {
+  handleClickId: Function,
+  currentDisplayList: Array<Object>,
+}
+
+export default class RenderList extends Component<Props> {
   render() {
     return (
       <Fragment>

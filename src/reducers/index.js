@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import reducer from './reducer';
+import reducerFetchDisplay from './reducerFetchDisplay';
 import reducerUserId from './reducerUserId';
- import persistIdDisplay from './reducerPersistDisplay';
+import persistIdDisplay from './reducerPersistDisplay';
  
 export default combineReducers ({
-    reducer, reducerUserId, persistIdDisplay,
+    reducerFetchDisplay, reducerUserId, persistIdDisplay,
 });

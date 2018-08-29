@@ -1,7 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import PageNumbers from './PageNumbers';
 
-export default class RenderPagesNumber extends Component {
+type Props = {
+  apiCommentList: Array<Object>,
+  itemPerPage: number,
+  handleClickPage: Function,
+  handleClickNextPage: Function,
+  handleClickPreviouslyPage: Function,
+}
+
+export default class RenderPagesNumber extends Component<Props> {
+  props: Props;
   render() {
 
     const pageNumbers = [];

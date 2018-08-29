@@ -1,6 +1,12 @@
 import React, { Component, Fragment } from 'react';
 
-export default class SelectValue extends Component {
+type Props = {
+  handleChange: Function,
+}
+
+export default class SelectValue extends Component<Props> {
+  props: Props;
+
   render() {
     return (
       <Fragment>

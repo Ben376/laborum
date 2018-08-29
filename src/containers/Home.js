@@ -13,13 +13,19 @@ import SelectValue from '../components/Selectvalue';
 import RenderPagesNumber from '../components/RenderPagesNumber';
 
 type Props = {
-  actions: Function,
+  actions: Object,
   history: Object,
   apiCommentList: Array<Object>,
 };
 
-class Home extends Component<Props> {
+type State = {
+  currentPage: number,
+  itemPerPage: number,
+};
+
+class Home extends Component<Props, State> {
   props: Props;
+  state: State;
 
     state = {
       currentPage: 1,
@@ -166,7 +172,7 @@ render() {
 }
 
 const mapStateToProps = state =>({
-    apiCommentList: state.reducer.data,
+    apiCommentList: state.reducerFetchDisplay.data,
   });
   
 const mapDispatchToProps = dispatch => {

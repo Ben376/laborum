@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import Header from './components/Header';
-import Home from './containers/Home';
-import Choosen from './components/Choosen';
-import Historic from './components/Historic';
-import NavBar from './components/NavBar';
+import Header from './components/Header.js';
+import Home from './containers/Home.js';
+import Choosen from './containers/Choosen.js';
+import Historic from './containers/Historic.js';
+import NavBar from './components/NavBar.js';
 
 import { Route, Switch } from 'react-router-dom';
-
 
 class App extends Component {
   render() {
@@ -16,9 +15,9 @@ class App extends Component {
         <NavBar />
         <div>
               <Switch>
-                      <Route exact path="/" component={Home} />
-                      <Route path="/Choosen" component={Choosen} />
-                      <Route path="/Historic" component={Historic} />
+                      <Route exact path="/" component={ Home } />
+                      <Route path="/Choosen" component={ Choosen } />
+                      <Route path="/Historic" component={ Historic } />
               </Switch>
          </div>
 

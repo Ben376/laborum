@@ -1,6 +1,14 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
 
-export default class PageNumbers extends Component {
+type Props = {
+  pageNumbers: Array<string | number>,
+  handleClickPage: Function,
+};
+
+
+export default class PageNumbers extends Component<Props> {
+  props: Props;
+
   render() {
 
     const renderPageNumbers = this.props.pageNumbers.map(number => {     

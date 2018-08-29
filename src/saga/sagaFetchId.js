@@ -1,14 +1,12 @@
-// @flow
-
 import { call, put, takeLatest } from "redux-saga/effects";
 import axios from 'axios';
 import { idApi } from '../endpoints/endpoints';
 
-export default function* apiIdSaga(): Saga<void> {
+export default function* apiIdSaga() {
   yield takeLatest('API_CALL_ID_REQUEST', workerSaga);
 }
 
-function* workerSaga(userId: Array<Object>): Saga<void> { 
+function* workerSaga(userId) { 
   try {
     const response = yield call(fetchApiId, userId.payload);
     const data = response.data;
@@ -22,6 +20,6 @@ function* workerSaga(userId: Array<Object>): Saga<void> {
 
 }
 
-export const fetchApiId = (id: number): Object => {
+export const fetchApiId = (id) => {
 	return axios.get(`${idApi}${id}`)
 }
