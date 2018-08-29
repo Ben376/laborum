@@ -11,6 +11,7 @@ import * as actions from '../actions';
 import Renderlist from '../components/RenderList';
 import SelectValue from '../components/Selectvalue';
 import RenderPagesNumber from '../components/RenderPagesNumber';
+import IdBar from '../components/IdBar';
 
 type Props = {
   actions: Object,
@@ -21,6 +22,7 @@ type Props = {
 type State = {
   currentPage: number,
   itemPerPage: number,
+  idFilter: number,
 };
 
 class Home extends Component<Props, State> {
@@ -28,12 +30,13 @@ class Home extends Component<Props, State> {
   state: State;
 
   static defaultProps = {
-    apiCommentList: [{id: 1, name: 'none', email: 'none', body: '...'}],
+    apiCommentList: [{id: '', name: 'none', email: 'none', body: '...'}],
   }
 
     state = {
       currentPage: 1,
       itemPerPage: 20,
+      idFilter: '',
     };
 
 componentDidMount () {
@@ -84,25 +87,41 @@ handleChange (event) {
   });
 }
 
+changeIdValue (event) {
+  this.setState({
+    idFilter: event,
+  })
+}
+
+filterBypostId () {
+  return this.props.apiCommentList.filter(matched => matched.postId === JSON.parse(this.state.idFilter));
+}
+
 render() {
-    const { apiCommentList } = this.props;
     const { currentPage, itemPerPage } = this.state;
+    const { apiCommentList } = this.props;
+
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;
-    const currentDisplayList = apiCommentList.slice(indexOfFirstItem, indexOfLastItem);
+    let currentDisplayList = apiCommentList.slice(indexOfFirstItem, indexOfLastItem);
+    
+    this.state.idFilter ? currentDisplayList = this.filterBypostId() : '';
 
       return (
+
       <Fragment>
             <Renderlist 
             handleClickId={ this.handleClickId.bind(this) } 
             currentDisplayList={ currentDisplayList } />
 
             <SelectValue 
-            handleChange={this.handleChange.bind(this)} />
+            handleChange={ this.handleChange.bind(this) } />
             
+            <IdBar changeIdValue= { this.changeIdValue.bind(this) } />
+
             <RenderPagesNumber 
-            apiCommentList = { this.props.apiCommentList } 
-            itemPerPage  = { this.state.itemPerPage }
+            apiCommentList = { apiCommentList } 
+            itemPerPage  = { itemPerPage }
             handleClickPage = { this.handleClickPage.bind(this) }
             handleClickPreviouslyPage = { this.handleClickPreviouslyPage.bind(this) }
             handleClickNextPage = { this.handleClickNextPage.bind(this) }
