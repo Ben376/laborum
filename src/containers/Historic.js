@@ -6,6 +6,12 @@ type Props = {
 };
 
 class Historic extends Component<Props> {
+  props:Props;
+
+  static defaultProps = {
+    persistData: [{id: 1, title: 'none', body: '...'}],
+  }
+
   render() {
     return (
       <Fragment>
