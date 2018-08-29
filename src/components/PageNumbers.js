@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 type Props = {
-  pageNumbers: Array<string | number>,
+  pageNumbers: Array<number>,
   handleClickPage: Function,
 };
 
@@ -9,6 +9,10 @@ type Props = {
 export default class PageNumbers extends Component<Props> {
   props: Props;
 
+  static defaultProps = {
+    pageNumbers: [1],
+  }
+  
   render() {
 
     const renderPageNumbers = this.props.pageNumbers.map(number => {     

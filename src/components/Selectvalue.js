@@ -7,7 +7,7 @@ type Props = {
 export default class SelectValue extends Component<Props> {
   props: Props;
 
-  render() {
+   render() {
     return (
       <Fragment>
             <select name='select' onChange={ this.props.handleChange }>

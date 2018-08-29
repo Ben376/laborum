@@ -27,6 +27,10 @@ class Home extends Component<Props, State> {
   props: Props;
   state: State;
 
+  static defaultProps = {
+    apiCommentList: [{id: 1, name: 'none', email: 'none', body: '...'}],
+  }
+
     state = {
       currentPage: 1,
       itemPerPage: 20,

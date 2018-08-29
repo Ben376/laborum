@@ -6,6 +6,11 @@ type Props = {
 }
 
 export default class RenderList extends Component<Props> {
+
+  static defaultProps = {
+    currentDisplayList: [{id: 1, name: 'ben', email: 'ben@ben.fr', body: '...'}],
+  }
+
   render() {
     return (
       <Fragment>

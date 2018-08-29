@@ -8,6 +8,10 @@ type Props = {
 class Choosen extends Component<Props> {
   props: Props;
 
+  static defaultProps = {
+    currentDisplayList: [{id: 1, title: 'none', body: '...'}],
+  }
+
   render() {      
     return (
       <Fragment>

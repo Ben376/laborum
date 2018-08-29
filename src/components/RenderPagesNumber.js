@@ -11,6 +11,12 @@ type Props = {
 
 export default class RenderPagesNumber extends Component<Props> {
   props: Props;
+
+  static defaultProps = {
+    apiCommentList: [{id: 1, name: 'ben', email: 'ben@ben.fr', body: '...'}],
+    itemPerPage: 20,
+  }
+
   render() {
 
     const pageNumbers = [];
