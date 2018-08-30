@@ -5,7 +5,6 @@ type Props = {
   handleClickPage: Function,
 };
 
-
 export default class PageNumbers extends Component<Props> {
   props: Props;
 
@@ -14,7 +13,6 @@ export default class PageNumbers extends Component<Props> {
   }
   
   render() {
-
     const renderPageNumbers = this.props.pageNumbers.map(number => {     
         return (
           <li
