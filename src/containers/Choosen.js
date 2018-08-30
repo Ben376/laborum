@@ -22,9 +22,9 @@ class Choosen extends Component<Props> {
           display: 'block', 
           margin: '5px'}} 
           >
-                <p> id: {this.props.id.id} </p>
-                <p> title: {this.props.id.title} </p>
-                <p> text: {this.props.id.body} </p>
+                <b> {this.props.id.id} </b>
+                <p> <b>title:</b> {this.props.id.title} </p>
+                <p> <b>text:</b> {this.props.id.body} </p>
         </div>
       </Fragment>
     )

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PageNumbers from './PageNumbers';
+import Button from '@material-ui/core/Button';
 
 type Props = {
   apiCommentList: Array<Object>,
@@ -27,12 +28,13 @@ export default class RenderPagesNumber extends Component<Props> {
     return (
         <Fragment>
             <PageNumbers 
-            pageNumbers= {pageNumbers} 
-            handleClickPage={this.props.handleClickPage.bind(this)} 
+                pageNumbers= { pageNumbers } 
+                handleClickPage={this.props.handleClickPage.bind(this)} 
             />
-
-            <button onClick={this.props.handleClickPreviouslyPage}> Previously </button>
-            <button onClick={this.props.handleClickNextPage} > Next </button>
+            <div style={{textAlign: 'center'}} >
+                <Button style={{margin: '10px'}} variant="contained" color="primary" onClick={this.props.handleClickPreviouslyPage}> Prev </Button>
+                <Button style={{margin: '10px'}} variant="contained" color="primary" onClick={this.props.handleClickNextPage} > Next </Button>
+            </div>
         </Fragment>
     )
   }

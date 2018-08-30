@@ -18,10 +18,12 @@ class Historic extends Component<Props> {
         <h4> List of chosen items </h4>
          <div> 
             { this.props.persistData.map(stored =>
-           <div key={ `persistId-${stored.id}` } >
-              <p> { stored.id } </p>
-              <p> { stored.title } </p>
-              <p> { stored.body } </p>
+           <div 
+           style={{border: '1px solid black', margin: '5px', padding:'5px'}}
+           key={ `persistId-${stored.id}` } >
+              <b> { stored.id } </b>
+              <p><b>Title:</b> { stored.title } </p>
+              <p><b>Text:</b> { stored.body } </p>
           </div>
           ) } 
         </div> 

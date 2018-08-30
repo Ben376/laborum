@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Button from '@material-ui/core/Button';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -110,14 +111,19 @@ render() {
       return (
 
       <Fragment>
-            <Renderlist 
-            handleClickId={ this.handleClickId.bind(this) } 
-            currentDisplayList={ currentDisplayList } />
-
+            <IdBar changeIdValue= { this.changeIdValue.bind(this) } />
+            
             <SelectValue 
             handleChange={ this.handleChange.bind(this) } />
             
-            <IdBar changeIdValue= { this.changeIdValue.bind(this) } />
+            <div style={{textAlign: 'center'}} >
+                <Button style={{margin: '10px'}} variant="contained" color="primary" onClick={() => this.handleClickPreviouslyPage()}> Prev </Button>
+                <Button style={{margin: '10px'}} variant="contained" color="primary" onClick={() => this.handleClickNextPage()} > Next </Button>
+            </div>
+
+            <Renderlist 
+            handleClickId={ this.handleClickId.bind(this) } 
+            currentDisplayList={ currentDisplayList } />
 
             <RenderPagesNumber 
             apiCommentList = { apiCommentList } 

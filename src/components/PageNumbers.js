@@ -42,7 +42,7 @@ export default class PageNumbers extends Component<Props> {
             }}
             id="page-numbers">
               { renderPageNumbers }
-            </ul>       
+            </ul> 
         </Fragment>
     )
   }
