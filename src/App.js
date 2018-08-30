@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import Header from './components/Header.js';
 import Home from './containers/Home.js';
 import Choosen from './containers/Choosen.js';
 import Historic from './containers/Historic.js';
@@ -11,7 +10,6 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Header />
         <NavBar />
         <div>
               <Switch>
