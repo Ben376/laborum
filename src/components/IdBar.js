@@ -1,6 +1,12 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
 
-export default class idBar extends Component {
+type Props = {
+  changeIdValue: Function,
+}
+
+export default class idBar extends Component<Props> {
+  props: Props;
+  
   render() {
     return (
       <Fragment>

@@ -1,6 +1,13 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
 
-export default class Button extends Component {
+type Props = {
+    handleClickNextPage: Function,
+    handleClickPreviouslyPage: Function,
+}
+
+export default class Button extends Component<Props> {
+    props: Props;
+    
   render() {
     return (
         <Fragment>

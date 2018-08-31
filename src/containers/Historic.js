@@ -20,7 +20,7 @@ class Historic extends Component<Props> {
             { this.props.persistData.map(stored =>
            <div 
            style={{border: '1px solid black', margin: '5px', padding:'5px'}}
-           key={ `persistId-${stored.id}` } >
+           key={ `persistId-${ stored.id }` } >
               <b> { stored.id } </b>
               <p><b>Title:</b> { stored.title } </p>
               <p><b>Text:</b> { stored.body } </p>
